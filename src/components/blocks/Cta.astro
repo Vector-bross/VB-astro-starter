@@ -1,0 +1,17 @@
+---
+import ButtonLink from '@/components/ui/ButtonLink.astro';
+import type { CtaProps } from '@/contracts/content';
+const { eyebrow, title, text, primaryCta, secondaryCta } = Astro.props as CtaProps;
+---
+
+<section class="vb-section bg-[var(--vb-color-dark)] text-white">
+  <div class="vb-container max-w-4xl">
+    {eyebrow && <p class="mb-3 text-sm font-semibold uppercase tracking-[0.14em] text-[var(--vb-color-accent)]">{eyebrow}</p>}
+    <h2 class="text-3xl font-bold tracking-tight sm:text-5xl">{title}</h2>
+    {text && <p class="mt-5 max-w-2xl text-lg leading-8 text-white/75">{text}</p>}
+    <div class="mt-8 flex flex-wrap gap-3">
+      <ButtonLink {...primaryCta} />
+      {secondaryCta && <ButtonLink {...secondaryCta} variant="secondary" />}
+    </div>
+  </div>
+</section>
