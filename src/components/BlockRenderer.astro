@@ -1,0 +1,13 @@
+---
+import Hero from '@/components/blocks/Hero.astro';
+import FeatureGrid from '@/components/blocks/FeatureGrid.astro';
+import Cta from '@/components/blocks/Cta.astro';
+import type { PageBlock } from '@/contracts/content';
+
+interface Props { block: PageBlock }
+const { block } = Astro.props;
+---
+
+{block.type === 'hero' && <Hero {...block.props} />}
+{block.type === 'feature-grid' && <FeatureGrid {...block.props} />}
+{block.type === 'cta' && <Cta {...block.props} />}
