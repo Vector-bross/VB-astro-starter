@@ -1,0 +1,40 @@
+---
+import '@/styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  canonical?: string;
+}
+
+const { title, description, canonical } = Astro.props;
+const canonicalUrl = canonical ?? new URL(Astro.url.pathname, Astro.site ?? Astro.url).toString();
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    {description && <meta name="description" content={description} />}
+    <link rel="canonical" href={canonicalUrl} />
+  </head>
+  <body>
+    <header class="border-b border-black/10">
+      <div class="vb-container flex min-h-16 items-center justify-between gap-6">
+        <a href="/" class="font-bold">Vector Bross Astro Starter</a>
+        <nav aria-label="Primary" class="text-sm text-[var(--vb-color-muted)]">
+          <a href="#architecture">Architecture</a>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <slot />
+    </main>
+    <footer class="border-t border-black/10 py-8 text-sm text-[var(--vb-color-muted)]">
+      <div class="vb-container">Astro frontend · CMS-agnostic contracts · Drupal-ready adapter layer</div>
+    </footer>
+  </body>
+</html>
