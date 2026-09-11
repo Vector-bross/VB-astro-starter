@@ -1,0 +1,22 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import BlockRenderer from '@/components/BlockRenderer.astro';
+import { homePage } from '@/mock/home';
+---
+
+<BaseLayout title={homePage.title} description={homePage.description} canonical={homePage.canonical}>
+  {homePage.blocks.map((block) => <BlockRenderer block={block} />)}
+  <section id="architecture" class="vb-section">
+    <div class="vb-container max-w-4xl">
+      <p class="text-sm font-semibold uppercase tracking-[0.14em] text-[var(--vb-color-accent)]">Architecture</p>
+      <h2 class="mt-3 text-3xl font-bold tracking-tight sm:text-5xl">Fixtures today. Drupal tomorrow. Same components.</h2>
+      <pre class="mt-8 overflow-x-auto rounded-[var(--vb-radius-md)] bg-[var(--vb-color-dark)] p-6 text-sm text-white"><code>Drupal JSON:API
+      ↓
+adapter / mapper
+      ↓
+TypeScript contracts
+      ↓
+Astro components</code></pre>
+    </div>
+  </section>
+</BaseLayout>
