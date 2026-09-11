@@ -1,0 +1,16 @@
+---
+import type { LinkProps } from '@/contracts/content';
+
+interface Props extends LinkProps {
+  variant?: 'primary' | 'secondary';
+}
+
+const { label, href, external = false, variant = 'primary' } = Astro.props;
+const classes = variant === 'primary'
+  ? 'inline-flex min-h-11 items-center justify-center rounded-full bg-[var(--vb-color-accent)] px-5 py-3 font-semibold text-white transition hover:opacity-90'
+  : 'inline-flex min-h-11 items-center justify-center rounded-full border border-current px-5 py-3 font-semibold transition hover:bg-black/5';
+---
+
+<a class={classes} href={href} target={external ? '_blank' : undefined} rel={external ? 'noreferrer' : undefined}>
+  {label}
+</a>
